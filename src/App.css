@@ -1,0 +1,239 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+html,
+body{
+    height: 100vh;
+    width: 100vw;
+}
+.cnt{
+    height: 49vw;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right,#ffaaff,white);
+}
+.cnt form{
+    height: 40vw;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.cnt button{
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    height: 3vw;
+    width: 34vw;
+    outline: none;
+    /* background-color: #9e9898; */
+    border: 1px solid transparent;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    box-shadow: 2px 2px 5px gray;
+}
+.cnt button:hover,.animalform button:hover{
+    background-color: rgb(100, 179, 206);
+}
+
+.cnt input{
+    padding: 1vw;
+    border-bottom: 0.2vw solid blue;
+}
+
+.cnt2{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right,lightblue,white);
+}
+input {
+    width: 34vw;
+    height: 4vw;
+    border-radius: 0.5vw;
+    outline: none;
+    border: none;
+    /* border-bottom: 0.2vw solid black; */
+    padding: 1.3vw;
+    font-size: 2vw;
+    /* background-color: transparent; */
+}
+small{
+    font-size: 1.3vw;
+    color: red;
+}
+.cnt2 form{
+    width: 50vw;
+    height: 40vw;
+    /* background-color: tomato; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cnt2 h1{
+    margin-bottom: 1vw;
+}
+
+.cnt2 button,.animalform button,.updateform button {
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    height: 3vw;
+    width: 34vw;
+    /* background-color: #9e9898; */
+    /* border: 1px solid transparent; */
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    /* box-shadow: 2px 2px 5px blue; */
+    outline: none;
+    cursor: pointer;
+}
+.cnt2 a{
+    margin-top: 5vw;
+}
+a{
+    font-size: 1.5vw;
+}
+button:hover{
+    transform: scale(0.97);
+}
+button:focus{
+    transform: scale(0.97);
+    background-color: rgb(100, 179, 206);
+}
+.cnt3{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: animate linear infinite .7s;
+}
+@keyframes animate {
+    0%{
+        background: linear-gradient(to bottom right ,tomato,white,tomato);
+    }
+    12.5%{
+        background: linear-gradient(to bottom ,tomato,white,tomato);
+    }
+    25%{
+        background: linear-gradient(to bottom left ,tomato,white,tomato);
+    }
+    37.5%{
+        background: linear-gradient(to left ,tomato,white,tomato);
+    }
+    50%{
+        background: linear-gradient(to top left ,tomato,white,tomato);
+    }
+    62.5%{
+        background: linear-gradient(to top ,tomato,white,tomato);
+    }
+    75%{
+        background: linear-gradient(to top right ,tomato,white,tomato);
+    }
+    87.5%{
+        background: linear-gradient(to right ,tomato,white,tomato);
+    }
+    100%{
+        background: linear-gradient(to bottom right ,tomato,white,tomato);
+    }
+}
+#hide{
+    display: none;
+}
+h1{
+    font-size: 3vw;
+}
+.show{
+    font-size: 1.5vw;
+    cursor: pointer;
+    margin-top: -3vw;
+    margin-left: 31vw;
+    margin-bottom: 1vw;
+}
+.animalform{
+    height: 40vw;
+    width: 99vw;
+    background: linear-gradient(to bottom right,#ffaaff,white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-top: .2vw solid black;
+}
+.updateform{
+    height: 42.8vw;
+    width: 99vw;
+    background: linear-gradient(to bottom right,#ffaaff,white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-top: .2vw solid black;
+}
+.kards{
+    border-top: .2vw solid black;
+    min-height: 30vw;
+    width: 99vw;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5vw;
+    background: linear-gradient(to top right,#ffaaff,white);
+}
+.animalform input{
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    border-bottom: .1vw solid black;
+    font-size: 1.5vw;
+    height: 3vw;
+    width: 40vw;
+}
+.animalform input:focus{
+    border-bottom: .15vw solid black;
+}
+.animalform button,.updateform button{
+    height: 3vw;
+    width: 40vw;
+}
+.kard{
+    cursor: pointer;
+    padding: 1vw;   
+    margin: 0.5vw;
+    min-height: 23vw;
+    width: 18vw;
+    word-wrap: break-word;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border-radius: 0.5vw;
+    box-shadow: 3px 3px 3px 3px grey;
+    transition: cubic-bezier(0.19, 1, 0.22, 1)1s;
+}
+.kard:hover{
+    box-shadow: 1px 1px 1px 1px grey;
+}
+img{
+    width: 16vw;
+}
+.animal{
+    margin-bottom: 1vw;
+}
+center{
+    font-family: monospace;
+   border-top: .2vw solid black;
+}
+textarea{
+    width: 45vw;
+    height: 3.5vw;
+    font-size: 1.5vw;
+    padding: 0.5vw;
+}
+textarea[name="image"]{
+    height: 11vw;
+}
