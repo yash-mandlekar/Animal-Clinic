@@ -26,7 +26,6 @@ const App = () => {
     setanimalState(cpy);
     localStorage.setItem("animals", JSON.stringify(animalState));
     navigate("/profile");
-    console.log(animalState);
   }
   return (
     <>

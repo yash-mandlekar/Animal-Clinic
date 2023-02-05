@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Profile = ({ LoggedIn, User,animalState,setanimalState,setupdate }) => {
+const Profile = ({
+  LoggedIn,
+  User,
+  animalState,
+  setanimalState,
+  setupdate,
+}) => {
   // useEffect(() => {
   //   localStorage.setItem("animals", JSON.stringify([{
   //     Animal: "Elephant",
@@ -14,9 +20,9 @@ const Profile = ({ LoggedIn, User,animalState,setanimalState,setupdate }) => {
   //   }]));
   // }, []);
   const navigate = useNavigate();
-  
+
   const animalSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const animalId = Math.round(Math.random() * 10000);
     const animal = {
       owner: User,
@@ -25,8 +31,8 @@ const Profile = ({ LoggedIn, User,animalState,setanimalState,setupdate }) => {
       Animal: e.target.animal.value,
       Health_Status: e.target.health.value,
       Weight: e.target.weight.value,
-      Other_Issues: e.target.issue.value
-    }
+      Other_Issues: e.target.issue.value,
+    };
     e.target.image.value = "";
     e.target.animal.value = "";
     e.target.health.value = "";
@@ -35,65 +41,76 @@ const Profile = ({ LoggedIn, User,animalState,setanimalState,setupdate }) => {
     localStorage.setItem(animalId, JSON.stringify(animal));
     const user2 = JSON.parse(localStorage.getItem(animalId));
     const animals = JSON.parse(localStorage.getItem("animals"));
+    if (animals === null) {
+      localStorage.setItem("animals", JSON.stringify([user2]));
+      setanimalState([user2]);
+      return;
+    }
     animals.push(user2);
     localStorage.setItem("animals", JSON.stringify(animals));
-    // navigate("/profile")
     setanimalState(animals);
-  }
-  const update =(e) =>{
+  };
+  const update = (e) => {
     setupdate(animalState[e]);
-    const cpy = [...animalState]
-    cpy.splice(e,1);
+    const cpy = [...animalState];
+    cpy.splice(e, 1);
     setanimalState(cpy);
     localStorage.setItem("animals", JSON.stringify(animalState));
     navigate("/update");
-  }
+  };
   return (
     <div>
-      {LoggedIn ?
+      {LoggedIn ? (
         <div>
           <h1>
-            <center>
-              Add Your Pet :
-            </center>
+            <center>Add Your Pet :</center>
           </h1>
           <form onSubmit={animalSubmit} className="animalform">
-            <input type="text" name='image' placeholder='Image URL' />
-            <input type="text" name='animal' placeholder='Animal' />
-            <input type="text" name='health' placeholder='Health' />
-            <input type="text" name='weight' placeholder='Weight' />
-            <input type="text" name='issue' placeholder='Other Issue' />
+            <input type="text" name="image" placeholder="Image URL" />
+            <input type="text" name="animal" placeholder="Animal" />
+            <input type="text" name="health" placeholder="Health" />
+            <input type="text" name="weight" placeholder="Weight" />
+            <input type="text" name="issue" placeholder="Other Issue" />
             <button>Add Pet</button>
           </form>
           <h1>
-            <center>
-              Pets in Clinic
-            </center>
+            <center>Pets in Clinic</center>
           </h1>
           <div className="kards">
-            {animalState && animalState.map((e, i) => (
-              <div key={i} className="kard">
-              <img src={`${e.Image}`} alt="" />
-              <div className="desc">
-                <div className="animal">Animal : {e.Animal}</div>
-                <div className="animal">Health Status: {e.Health_Status} </div>
-                <div className="animal">Weight: {e.Weight} </div>
-                <div className="animal">Other Issues: {e.Other_Issues} </div>
-                <div className="animal">Owner email: {e.owner} </div>
-                <button className='btn btn-success' onClick={()=>update(i)} >Update</button>
-              </div>
-            </div>
-            ))}
-            
+            {animalState &&
+              animalState.map((e, i) => (
+                <div key={i} className="kard">
+                  <img src={`${e.Image}`} alt="" />
+                  <div className="desc">
+                    <div className="animal">Animal : {e.Animal}</div>
+                    <div className="animal">
+                      Health Status: {e.Health_Status}{" "}
+                    </div>
+                    <div className="animal">Weight: {e.Weight} </div>
+                    <div className="animal">
+                      Other Issues: {e.Other_Issues}{" "}
+                    </div>
+                    <div className="animal">Owner email: {e.owner} </div>
+                    <button
+                      className="btn btn-success"
+                      onClick={() => update(i)}
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
-
-        : <div className='cnt3'><h1>Login First</h1>
-          <Link to="/" >Go To LogIn Page</Link>
-          <Link to="/" >Click Here...</Link>
-        </div>}
+      ) : (
+        <div className="cnt3">
+          <h1>Login First</h1>
+          <Link to="/">Go To LogIn Page</Link>
+          <Link to="/">Click Here...</Link>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Profile;
